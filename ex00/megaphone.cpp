@@ -33,7 +33,11 @@ int main(int argc, char* argv[])
 		return (1);
 	}
 	for (int i = 1; i < argc; ++i)
-		std::cout << ft::toupper(argv[i]) << " ";
+	{
+		std::cout << ft::toupper(argv[i]);
+		// if (i < argc - 1)
+		// 	std::cout  << " ";
+	}
 	std::cout << std::endl;
 	return 0;
 }
