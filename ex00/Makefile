@@ -1,7 +1,7 @@
 # (1)コンパイラ
 CXX  = c++
 # (2)コンパイルオプション
-CXXFLAGS    = -Wall -Wextra -Werror  -std=c++98
+CXXFLAGS    = -Wall -Wextra -Werror -Wconversion -std=c++98 
 # (3)実行ファイル名
 TARGET  = a.out
 # (4)コンパイル対象のソースコード
@@ -24,7 +24,8 @@ $(OBJS): $(SRCS)
 	$(CXX) $(CXXFLAGS) $(INCDIR) -c $(SRCS)
 
 run: all
-	./$(TARGET) kKk lLl pPp
+	./$(TARGET)
+
 # (12).oファイル、実行ファイル、.dファイルを削除
 clean:
 	rm -f $(OBJS) $(TARGET)
