@@ -23,9 +23,11 @@ $(TARGET): $(OBJS)
 $(OBJS): $(SRCS)
 	$(CXX) $(CXXFLAGS) $(INCDIR) -c $(SRCS)
 
+clean:
+	rm -f $(OBJS)
+
+fclean: clean
+	rm -f $(TARGET)
+
 run: all
 	./$(TARGET)
-
-# (12).oファイル、実行ファイル、.dファイルを削除
-clean:
-	rm -f $(OBJS) $(TARGET)
