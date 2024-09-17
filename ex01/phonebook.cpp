@@ -23,7 +23,7 @@
 // 	5.パイプを出力
 // 	index、first,last,nickで1~5を繰り返す
 
-void	PhoneBook::fill_info(Contact *contact, std::string first_name, std::string last_name, std::string nickname,
+void	PhoneBook::add_contact(Contact *contact, std::string first_name, std::string last_name, std::string nickname,
 			std::string phone_number, std::string password)
 {
 	contact->set_first_name(first_name);
@@ -33,6 +33,11 @@ void	PhoneBook::fill_info(Contact *contact, std::string first_name, std::string 
 	contact->set_password(password);
 }
 
+void	PhoneBook::add()
+{
+	
+}
+
 size_t	PhoneBook::find_empty_or_last_id()
 {
 	size_t i = 0;
@@ -40,24 +45,20 @@ size_t	PhoneBook::find_empty_or_last_id()
 	{
 		if (this->contacts[i].get_first_name().empty())
 			return (i);
+		i++;
 	}
-	return (i - 1);
+	return (9);
 }
 
-bool PhoneBook::is_all_of(std::string str, int(*bool_func)(int))
+bool PhoneBook::is_all_of(const std::string str, int(*bool_func)(int))
 {
-	for(size_t i = 0; i < str.length(); i++)
+	size_t len = str.length();
+	for(size_t i = 0; i < len; i++)
 	{
 		if (!bool_func(str[i]))
 			return (false);
 	}
 	return (true);
-}
-
-void	search_id(unsigned int id)
-{
-	if (id < 1 || id > 8)
-		return ()
 }
 
 static void	print_over10(std::string str)
@@ -97,5 +98,12 @@ void	PhoneBook::print_contact(Contact *contact, unsigned int id)
 	print_str(contact->get_last_name());
 	std::cout << '|';
 	print_str(contact->get_nickname());
-	std::cout << '|';
+	std::cout << '|' << std::endl;
+}
+
+void	PhoneBook::search_id(unsigned int id)
+{
+	if (id < 1 || id > 8)
+		return ;
+	print_contact(&(this->contacts[id]), id);
 }

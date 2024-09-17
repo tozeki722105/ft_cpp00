@@ -1,46 +1,46 @@
-#include "test.hpp"
+#include <iostream>
+#include <string>
+#include "contact.hpp"
+#include "phonebook.hpp"
 
-std::string Contact::get_first_name()
+void fill(Contact *contact)
 {
-	return (first_name);
+	std::string input;
+
+	if (!std::getline(std::cin, input))
+		return ;
+	contact->set_first_name(input);
+	if (!std::getline(std::cin, input))
+		return ;
+	contact->set_last_name(input);
+	if (!std::getline(std::cin, input))
+		return ;
+	contact->set_nickname(input);
+	if (!std::getline(std::cin, input))
+		return ;
+	contact->set_phone_number(input);
+	if (!std::getline(std::cin, input))
+		return ;
+	contact->set_password(input);
 }
 
-std::string Contact::get_last_name()
+void PhoneBook::add_con()
 {
-	return (last_name);
+	fill(&(this->contacts[this->now]));
+	this->now++;
+	if (this->now > 8)
+		this->now = 0;
 }
 
-std::string Contact::get_nickname()
+int main()
 {
-	return (nickname);
-}
+	std::string input;
 
-std::string Contact::get_phone_number()
-{
-	return (phone_number);
-}
-
-std::string Contact::get_password()
-{
-	return (password);
-}
-
-void Contact::set_first_name(std::string str)
-{
-	first_name = str;
-}
-
-void Contact::set_last_name(std::string str)
-{
-	last_name = str;
-}
-
-void Contact::set_nickname(std::string str)
-{
-	nickname = str;
-}
-
-void Contact::set_password(std::string str)
-{
-	password = str;
+	while (1)
+	{
+		if (!std::getline(std::cin, input))//標準入力から1行読み込む
+			break;
+		std::cout << "入力された文字列: " << input << std::endl;
+	}
+  	return 0;
 }

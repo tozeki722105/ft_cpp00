@@ -4,7 +4,7 @@ RM		:=	rm -f
 
 TARGET	:=	a.out
 
-SRCS    :=	test_eof.cpp
+SRCS    :=	test.cpp
 OBJS    :=	$(patsubst %.cpp, %.o, $(SRCS))
 
 all: $(TARGET)
