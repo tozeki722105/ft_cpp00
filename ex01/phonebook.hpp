@@ -1,24 +1,23 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+#include "contact.hpp"
+#include "utils.hpp"
 #include <iostream>
 #include <string>
-#include "contact.hpp"
+#include <sstream>
 
 class PhoneBook
 {
 	public:
-	void	PhoneBook::search_id(unsigned int id);
-	void	PhoneBook::print_contact(Contact *contact, unsigned int id);
-	bool	PhoneBook::is_all_of(const std::string str, int(*bool_func)(int));
-	void	PhoneBook::add_con();
+	PhoneBook();
+	void search();
+	void add();
 
 	private:
-	const size_t	max = 8;
-	size_t			now = 0;
 	Contact contacts[8];
-
-
+	size_t now;
+	bool fill_flag;
 };
 
 #endif

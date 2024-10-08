@@ -2,10 +2,14 @@ CXX		:=	c++
 CXXFLAGS	:=	-Wall -Wextra -Werror -Wconversion -std=c++98
 RM		:=	rm -f
 
-TARGET	:=	a.out
-
-SRCS    :=	test.cpp
+TARGET	:=	PhoneBook
+SRCS    :=	main.cpp\
+			contact.cpp\
+			phonebook.cpp\
+			utils.cpp
 OBJS    :=	$(patsubst %.cpp, %.o, $(SRCS))
+
+.PHONY: all clean flean re
 
 all: $(TARGET)
 
@@ -13,7 +17,7 @@ $(TARGET): $(OBJS)
 	$(CXX) $^ -o $@
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
@@ -21,5 +25,4 @@ clean:
 fclean: clean
 	$(RM) $(TARGET)
 
-run: all
-	./$(TARGET)
+re: fclean all

@@ -1,46 +1,45 @@
-#include <iostream>
-#include <string>
 #include "contact.hpp"
-#include "phonebook.hpp"
 
-void fill(Contact *contact)
+void Contact::set_first_name(std::string str)
 {
-	std::string input;
-
-	if (!std::getline(std::cin, input))
-		return ;
-	contact->set_first_name(input);
-	if (!std::getline(std::cin, input))
-		return ;
-	contact->set_last_name(input);
-	if (!std::getline(std::cin, input))
-		return ;
-	contact->set_nickname(input);
-	if (!std::getline(std::cin, input))
-		return ;
-	contact->set_phone_number(input);
-	if (!std::getline(std::cin, input))
-		return ;
-	contact->set_password(input);
+    this->first_name = str;
 }
 
-void PhoneBook::add_con()
+void Contact::set_last_name(std::string str)
 {
-	fill(&(this->contacts[this->now]));
-	this->now++;
-	if (this->now > 8)
-		this->now = 0;
+    this->last_name = str;
 }
 
-int main()
+void Contact::set_nickname(std::string str)
 {
-	std::string input;
+    this->nickname = str;
+}
 
-	while (1)
-	{
-		if (!std::getline(std::cin, input))//標準入力から1行読み込む
-			break;
-		std::cout << "入力された文字列: " << input << std::endl;
-	}
-  	return 0;
+void Contact::set_phone_number(std::string str)
+{
+    this->phone_number = str;
+}
+
+void Contact::set_password(std::string str)
+{
+    this->password = str;
+}
+
+void Contact::print()
+{
+	std::cout << std::setw(10) << "first_name" << '|' 
+		<< std::setw(10) << "last_name" << '|'
+		<< std::setw(10) << "nickname" << '|'
+		<< std::setw(10) << "phone_num" << '|'
+		<< std::setw(10) << "password" << '|' << std::endl;
+	print_fixed_width(this->first_name, 10);
+	std::cout << '|';
+	print_fixed_width(this->last_name, 10);
+	std::cout << '|';
+	print_fixed_width(this->nickname, 10);
+	std::cout << '|';
+	print_fixed_width(this->phone_number, 10);
+	std::cout << '|';
+	print_fixed_width(this->password, 10);
+	std::cout << '|' << std::endl;
 }
