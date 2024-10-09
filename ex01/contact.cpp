@@ -25,21 +25,31 @@ void Contact::set_password(std::string str)
     this->password = str;
 }
 
-void Contact::print()
+void Contact::print_formatted(int width, char delim, size_t id)
 {
-	std::cout << std::setw(10) << "first_name" << '|' 
-		<< std::setw(10) << "last_name" << '|'
-		<< std::setw(10) << "nickname" << '|'
-		<< std::setw(10) << "phone_num" << '|'
-		<< std::setw(10) << "password" << '|' << std::endl;
-	print_fixed_width(this->first_name, 10);
-	std::cout << '|';
-	print_fixed_width(this->last_name, 10);
-	std::cout << '|';
-	print_fixed_width(this->nickname, 10);
-	std::cout << '|';
-	print_fixed_width(this->phone_number, 10);
-	std::cout << '|';
-	print_fixed_width(this->password, 10);
-	std::cout << '|' << std::endl;
+	print_fixed_width("id", width);
+	std::cout << delim;
+	print_fixed_width("first_name", width);
+	std::cout << delim;
+	print_fixed_width("last_name", width);
+	std::cout << delim;
+	print_fixed_width("nickname", width);
+	std::cout << delim;
+	print_fixed_width("phone_number", width);
+	std::cout << delim;
+	print_fixed_width("password", width);
+	std::cout << delim << std::endl;
+
+	print_fixed_width(std::to_string(id), width);
+	std::cout << delim;
+	print_fixed_width(this->first_name, width);
+	std::cout << delim;
+	print_fixed_width(this->last_name, width);
+	std::cout << delim;
+	print_fixed_width(this->nickname, width);
+	std::cout << delim;
+	print_fixed_width(this->phone_number, width);
+	std::cout << delim;
+	print_fixed_width(this->password, width);
+	std::cout << delim << std::endl;
 }

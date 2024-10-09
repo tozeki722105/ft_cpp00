@@ -14,7 +14,7 @@ class Contact
 	void set_nickname(std::string str);
 	void set_phone_number(std::string str);
 	void set_password(std::string str);
-	void	print();
+	void print_formatted(int width, char delim, size_t id);
 
 	private:
 	std::string	first_name;
