@@ -12,7 +12,7 @@ void	handle_search(PhoneBook *phonebook)
 	//convert digit
 	std::stringstream ss(input);
 	size_t id;
-	if (!(ss >> id)|| id >= 8 
+	if (!(ss >> id)|| id >= phonebook->get_MAX_CONTACTS() 
 		|| (!phonebook->get_fill_flag() && id >= phonebook->get_now_id()))
 		return ;
 	std::cout << id << ';' << std::endl;

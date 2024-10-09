@@ -3,7 +3,7 @@
 void PhoneBook::add(Contact *contact)
 {
 	contacts[now_id++] = *contact;
-	if (this->now_id == 8)
+	if (this->now_id == this->MAX_CONTACTS)
 	{
 		this->now_id = 0;
 		this->fill_flag = true;
@@ -12,7 +12,7 @@ void PhoneBook::add(Contact *contact)
 
 void PhoneBook::search(size_t id)
 {
-	if (id >= 8 || (!this->fill_flag && id > this->now_id))
+	if (id >= this->MAX_CONTACTS || (!this->fill_flag && id > this->now_id))
 		return ;
 	this->contacts[id].print_formatted(10, '|', id);
 }
@@ -27,8 +27,7 @@ size_t PhoneBook::get_now_id()
 	return (this->now_id);
 }
 
-PhoneBook::PhoneBook()
+size_t PhoneBook::get_MAX_CONTACTS()
 {
-	this->now_id = 0;
-	this->fill_flag = false;
+	return (this->MAX_CONTACTS);
 }
