@@ -15,9 +15,19 @@ void	handle_search(PhoneBook *phonebook)
 	if (!(ss >> id)|| id >= phonebook->get_MAX_CONTACTS() 
 		|| (!phonebook->get_fill_flag() && id >= phonebook->get_now_id()))
 		return ;
-	// std::cout << id << ';' << std::endl;
 	phonebook->search(id);
 }
+
+// void A(std::string prompt, std::string trim_chars)
+// {
+// 	std::string input;
+
+// 	std::cout << prompt;
+// 	if(!std::getline(std::cin, input))
+
+	
+
+// }
 
 void	handle_add(PhoneBook *phonebook)
 {
@@ -28,6 +38,8 @@ void	handle_add(PhoneBook *phonebook)
 	std::string password;
 
 	std::cout << "Enter first_name: ";
+	std::getline(std::cin, first_name);
+	if (std::cin.eof() || std::cin.fail())
 	if (!std::getline(std::cin, first_name) || first_name.empty() || !is_all_of(first_name, std::isprint))
 		return ;
 	std::cout << "Enter last_name: ";
