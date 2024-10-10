@@ -15,7 +15,7 @@ void	handle_search(PhoneBook *phonebook)
 	if (!(ss >> id)|| id >= phonebook->get_MAX_CONTACTS() 
 		|| (!phonebook->get_fill_flag() && id >= phonebook->get_now_id()))
 		return ;
-	std::cout << id << ';' << std::endl;
+	// std::cout << id << ';' << std::endl;
 	phonebook->search(id);
 }
 
@@ -28,19 +28,19 @@ void	handle_add(PhoneBook *phonebook)
 	std::string password;
 
 	std::cout << "Enter first_name: ";
-	if (!std::getline(std::cin, first_name) || first_name.empty())// || !is_all_of(first_name, std::isalpha)
+	if (!std::getline(std::cin, first_name) || first_name.empty() || !is_all_of(first_name, std::isprint))
 		return ;
 	std::cout << "Enter last_name: ";
-	if (!std::getline(std::cin, last_name) || last_name.empty())// || !is_all_of(last_name, std::isalpha)
+	if (!std::getline(std::cin, last_name) || last_name.empty() || !is_all_of(last_name, std::isprint))
 		return ;
 	std::cout << "Enter nickname: ";
-	if (!std::getline(std::cin, nickname) || nickname.empty())// || !is_all_of(nickname, std::isalnum)
+	if (!std::getline(std::cin, nickname) || nickname.empty() || !is_all_of(nickname, std::isprint))
 		return ;
 	std::cout << "Enter phone_number: ";
-	if (!std::getline(std::cin, phone_number) || phone_number.empty())// || !is_all_of(phone_number, std::isdigit)
+	if (!std::getline(std::cin, phone_number) || phone_number.empty() || !is_all_of(phone_number, std::isdigit))
 		return ;
 	std::cout << "Enter password: ";
-	if (!std::getline(std::cin, password) || password.empty())// || !is_all_of(password, std::isalnum)
+	if (!std::getline(std::cin, password) || password.empty() || !is_all_of(password, std::isprint))
 		return ;
 	Contact		new_contact;
 	new_contact.set_first_name(first_name);
@@ -58,7 +58,7 @@ int main(void)
 
 	while (1)
 	{
-		std::cout << "Enter ADD, SEARCH or EXARCH: ";
+		std::cout << "Enter ADD, SEARCH or EXIT: ";
 		if (!std::getline(std::cin, input) || input == "EXIT")
 			break;
 		if (input == "ADD")
