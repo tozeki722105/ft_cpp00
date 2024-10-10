@@ -21,7 +21,7 @@ void print_fixed_width(std::string str, int width)
 	unsigned int uwidth = static_cast<unsigned int>(width);
 	if (str.length() > uwidth)
 	{
-		std::cout << str.substr(0, uwidth) << '.';
+		std::cout << str.substr(0, uwidth - 1) << '.';
 		return ;
 	}
 	if (str.length() < uwidth)

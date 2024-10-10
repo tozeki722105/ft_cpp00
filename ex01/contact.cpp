@@ -27,7 +27,8 @@ void Contact::set_password(std::string str)
 
 void Contact::print_formatted(int width, char delim, size_t id)
 {
-	print_fixed_width("id", width);
+	std::cout << delim;
+	print_fixed_width("id", width / 2);
 	std::cout << delim;
 	print_fixed_width("first_name", width);
 	std::cout << delim;
@@ -40,8 +41,7 @@ void Contact::print_formatted(int width, char delim, size_t id)
 	print_fixed_width("password", width);
 	std::cout << delim << std::endl;
 
-	print_fixed_width(std::to_string(id), width);
-	std::cout << delim;
+	std::cout << delim << std::setw(width / 2) << id << delim;
 	print_fixed_width(this->first_name, width);
 	std::cout << delim;
 	print_fixed_width(this->last_name, width);
