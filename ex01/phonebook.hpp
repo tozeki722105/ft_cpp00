@@ -1,27 +1,27 @@
 #ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+
+#include <iostream>
+#include <sstream>
+#include <string>
 
 #include "contact.hpp"
-#include "utils.hpp"
-#include <iostream>
-#include <string>
-#include <sstream>
 
 class PhoneBook
 {
-	private:
-	static const size_t MAX_CONTACTS = 8;
-	Contact contacts[MAX_CONTACTS];
-	size_t now_id;
-	bool fill_flag;
+private:
+	static const unsigned int MAX_CONTACTS = 8;
+	Contact                   contacts[MAX_CONTACTS];
+	unsigned int              nowId;
+	bool                      fillFlag;
 
-	public:
-	PhoneBook() : now_id(0), fill_flag(false) {};
-	void search(size_t id);
-	void add(Contact *contact);
-	bool get_fill_flag();
-	size_t get_now_id();
-	size_t get_MAX_CONTACTS();
+public:
+	PhoneBook();
+	void         search(unsigned int id);
+	void         add(const Contact &contact);
+	bool         getFillFlag();
+	unsigned int getNowId();
+	unsigned int getMAX_CONTACTS();
 };
 
 #endif

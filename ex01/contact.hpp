@@ -1,27 +1,26 @@
 #ifndef CONTACT_HPP
-# define CONTACT_HPP
+#define CONTACT_HPP
 
-#include "utils.hpp"
-#include <iostream>
-#include <string>
 #include <iomanip>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 class Contact
 {
-	public:
-	void set_first_name(std::string str);
-	void set_last_name(std::string str);
-	void set_nickname(std::string str);
-	void set_phone_number(std::string str);
-	void set_password(std::string str);
-	void print_formatted(int width, char delim, size_t id);
+public:
+	Contact();
+	Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
+	~Contact();
+	void print_formatted(unsigned int width, char delim, unsigned int id);
 
-	private:
-	std::string	first_name;
-	std::string	last_name;
-	std::string	nickname;
-	std::string	phone_number;
-	std::string	password;
+private:
+	std::string        first_name;
+	std::string        last_name;
+	std::string        nickname;
+	std::string        phone_number;
+	std::string        darkest_secret;
+	static std::string fixed_width(const std::string &str, unsigned int width);
 };
 
 #endif

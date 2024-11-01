@@ -1,55 +1,36 @@
 #include "contact.hpp"
 
-void Contact::set_first_name(std::string str)
+Contact::Contact() {}
+
+Contact::Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds)
+	: first_name(fn), last_name(ln), nickname(nn), phone_number(pn), darkest_secret(ds)
 {
-    this->first_name = str;
 }
 
-void Contact::set_last_name(std::string str)
+Contact::~Contact() {}
+
+std::string Contact::fixed_width(const std::string &str, unsigned int width)
 {
-    this->last_name = str;
+	if (width == 0)
+		return ("");
+	if (str.length() == width)
+		return (str);
+	if (str.length() > width)
+		return (str.substr(0, width - 1) + '.');
+	std::stringstream ss;
+	ss << std::setw(static_cast<int>(width)) << std::right << str;
+	return (ss.str());
 }
 
-void Contact::set_nickname(std::string str)
+void Contact::print_formatted(unsigned int width, char delim, unsigned int id)
 {
-    this->nickname = str;
-}
+	std::cout << delim << this->fixed_width("index", width / 2) << delim
+			  << this->fixed_width("first_name", width) << delim
+			  << this->fixed_width("last_name", width) << delim
+			  << this->fixed_width("nickname", width) << delim << std::endl;
 
-void Contact::set_phone_number(std::string str)
-{
-    this->phone_number = str;
-}
-
-void Contact::set_password(std::string str)
-{
-    this->password = str;
-}
-
-void Contact::print_formatted(int width, char delim, size_t id)
-{
-	std::cout << delim;
-	print_fixed_width("id", width / 2);
-	std::cout << delim;
-	print_fixed_width("first_name", width);
-	std::cout << delim;
-	print_fixed_width("last_name", width);
-	std::cout << delim;
-	print_fixed_width("nickname", width);
-	std::cout << delim;
-	print_fixed_width("phone_number", width);
-	std::cout << delim;
-	print_fixed_width("password", width);
-	std::cout << delim << std::endl;
-
-	std::cout << delim << std::setw(width / 2) << id << delim;
-	print_fixed_width(this->first_name, width);
-	std::cout << delim;
-	print_fixed_width(this->last_name, width);
-	std::cout << delim;
-	print_fixed_width(this->nickname, width);
-	std::cout << delim;
-	print_fixed_width(this->phone_number, width);
-	std::cout << delim;
-	print_fixed_width(this->password, width);
-	std::cout << delim << std::endl;
+	std::cout << delim << std::setw(static_cast<int>(width / 2)) << std::right << id << delim
+			  << this->fixed_width(this->first_name, width) << delim
+			  << this->fixed_width(this->last_name, width) << delim
+			  << this->fixed_width(this->nickname, width) << delim << std::endl;
 }

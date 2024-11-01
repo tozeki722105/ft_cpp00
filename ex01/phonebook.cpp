@@ -1,33 +1,34 @@
 #include "phonebook.hpp"
 
-void PhoneBook::add(Contact *contact)
+PhoneBook::PhoneBook() : nowId(0), fillFlag(false) {}
+
+void PhoneBook::add(const Contact &contact)
 {
-	contacts[now_id++] = *contact;
-	if (this->now_id == this->MAX_CONTACTS)
-	{
-		this->now_id = 0;
-		this->fill_flag = true;
+	contacts[nowId++] = contact;
+	if (this->nowId == this->MAX_CONTACTS) {
+		this->nowId = 0;
+		this->fillFlag = true;
 	}
 }
 
-void PhoneBook::search(size_t id)
+void PhoneBook::search(unsigned int id)
 {
-	if (id >= this->MAX_CONTACTS || (!this->fill_flag && id > this->now_id))
-		return ;
+	if (id >= this->MAX_CONTACTS || (!this->fillFlag && id > this->nowId))
+		return;
 	this->contacts[id].print_formatted(10, '|', id);
 }
 
-bool PhoneBook::get_fill_flag()
+bool PhoneBook::getFillFlag()
 {
-	return (this->fill_flag);
+	return (this->fillFlag);
 }
 
-size_t PhoneBook::get_now_id()
+unsigned int PhoneBook::getNowId()
 {
-	return (this->now_id);
+	return (this->nowId);
 }
 
-size_t PhoneBook::get_MAX_CONTACTS()
+unsigned int PhoneBook::getMAX_CONTACTS()
 {
 	return (this->MAX_CONTACTS);
 }
