@@ -1,33 +1,27 @@
-# (1)コンパイラ
-CXX  = c++
-# (2)コンパイルオプション
-CXXFLAGS    = -Wall -Wextra -Werror -Wconversion -std=c++98 
-# (3)実行ファイル名
-TARGET  = a.out
-# (4)コンパイル対象のソースコード
-SRCS    = megaphone.cpp
-# (5)オブジェクトファイル名
-OBJS    = $(SRCS:.cpp=.o)
+CXX		:=	c++
+CXXFLAGS	:=	-Wall -Wextra -Werror -Wconversion -std=c++98
+RM		:=	rm -f
 
-# (6)インクルードファイルのあるディレクトリパス
-INCDIR  = -I .
+TARGET	:=	a.out
+SRCS    :=	megaphone.cpp
+OBJS    :=	$(patsubst %.cpp, %.o, $(SRCS))
 
-# (11)"make all"で make cleanとmakeを同時に実施。
-all:$(TARGET)
+.PHONY: all clean flean re
 
-# (9)ターゲットファイル生成
+all: $(TARGET)
+
 $(TARGET): $(OBJS)
-	$(CXX) -o $@ $^ 
+	$(CXX) $^ -o $@
 
-# (10)オブジェクトファイル生成
-$(OBJS): $(SRCS)
-	$(CXX) $(CXXFLAGS) $(INCDIR) -c $(SRCS)
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(TARGET)
+	$(RM) $(TARGET)
 
-run: all
-	./$(TARGET)
+re: fclean all
+
+
