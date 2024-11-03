@@ -3,16 +3,15 @@
 
 int main(void)
 {
-	std::string line;
+	std::string input;
 	PhoneBook   phonebook;
 
-	while (1) {
-		std::cout << "Enter ADD, SEARCH or EXIT: ";
-		if (!std::getline(std::cin, line) || line == "EXIT")
+	while (std::cin.good()) {
+		if (!interface::getLine(input, "Enter ADD, SEARCH or EXIT: ") || input == "EXIT")
 			break;
-		if (line == "ADD")
+		if (input == "ADD")
 			interface::add::handle(&phonebook);
-		else if (line == "SEARCH")
+		else if (input == "SEARCH")
 			interface::search::handle(&phonebook);
 	}
 }
