@@ -2,7 +2,7 @@ CXX		:=	c++
 CXXFLAGS	:=	-Wall -Wextra -Werror -Wconversion -std=c++98
 RM		:=	rm -f
 
-TARGET	:=	PhoneBook
+TARGET	:=	a.out
 SRCS    :=	main.cpp \
 			contact.cpp\
 			interface.cpp \
