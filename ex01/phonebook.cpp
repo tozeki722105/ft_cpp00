@@ -13,22 +13,9 @@ void PhoneBook::add(const Contact &contact)
 
 void PhoneBook::search(unsigned int id)
 {
-	if (id >= this->MAX_CONTACTS || (!this->fillFlag && id > this->nowId))
+	if (id >= this->MAX_CONTACTS || (!this->fillFlag && id > this->nowId)) {
+		std::cerr << "The id is out of range or has not been added yet" << std::endl;
 		return;
+	}
 	this->contacts[id].print_formatted(10, '|', id);
-}
-
-bool PhoneBook::getFillFlag()
-{
-	return (this->fillFlag);
-}
-
-unsigned int PhoneBook::getNowId()
-{
-	return (this->nowId);
-}
-
-unsigned int PhoneBook::getMAX_CONTACTS()
-{
-	return (this->MAX_CONTACTS);
 }

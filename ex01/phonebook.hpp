@@ -17,11 +17,8 @@ private:
 
 public:
 	PhoneBook();
-	void         search(unsigned int id);
-	void         add(const Contact &contact);
-	bool         getFillFlag();
-	unsigned int getNowId();
-	unsigned int getMAX_CONTACTS();
+	void search(unsigned int id);
+	void add(const Contact &contact);
 };
 
 #endif
