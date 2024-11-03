@@ -6,8 +6,7 @@ TARGET	:=	PhoneBook
 SRCS    :=	main.cpp \
 			contact.cpp\
 			interface.cpp \
-			phonebook.cpp \
-			validate.cpp
+			phonebook.cpp
 OBJS    :=	$(patsubst %.cpp, %.o, $(SRCS))
 
 .PHONY: all clean flean re
