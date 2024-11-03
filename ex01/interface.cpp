@@ -2,7 +2,7 @@
 
 namespace inner
 {
-std::string strtrim(const std::string &str, const std::string &trimed_set)
+std::string strTrim(const std::string &str, const std::string &trimed_set)
 {
 	size_t start = str.find_first_not_of(trimed_set);
 	size_t end = str.find_last_not_of(trimed_set);
@@ -33,7 +33,7 @@ bool interface::getLine(std::string &input, const std::string &prompt, const std
 	std::cout << prompt;
 	if (!std::getline(std::cin, line))
 		return (false);
-	input = inner::strtrim(line, trim_set);
+	input = inner::strTrim(line, trim_set);
 	return (true);
 }
 
