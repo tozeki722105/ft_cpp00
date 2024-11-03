@@ -6,19 +6,20 @@
 
 #include "contact.hpp"
 #include "phonebook.hpp"
-#include "validate.hpp"
 
 namespace interface
 {
-bool getValidInput(std::string &input, const std::string &prompt);
+bool getLine(std::string &input, const std::string &prompt, const std::string &trim_set = "\t ");
 namespace add
 {
 	void handle(PhoneBook *phonebook);
+	void err();
 }  // namespace add
 namespace search
 {
 	void handle(PhoneBook *phonebook);
-}
+	void err();
+}  // namespace search
 }  // namespace interface
 
 #endif
