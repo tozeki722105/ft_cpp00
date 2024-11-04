@@ -2,23 +2,25 @@
 #define PHONEBOOK_HPP
 
 #include <iostream>
+#include <limits>
 #include <sstream>
 #include <string>
 
 #include "contact.hpp"
+#include "interface.hpp"
 
 class PhoneBook
 {
 private:
 	static const unsigned int MAX_CONTACTS = 8;
 	Contact                   contacts[MAX_CONTACTS];
-	unsigned int              nowId;
-	bool                      fillFlag;
+	unsigned int              contact_count;
 
 public:
 	PhoneBook();
-	void search(unsigned int id);
-	void add(const Contact &contact);
+	void addContact();
+	void searchContact();
+	void printContacts();
 };
 
 #endif

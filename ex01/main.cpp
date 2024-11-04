@@ -7,11 +7,11 @@ int main(void)
 	PhoneBook   phonebook;
 
 	while (std::cin.good()) {
-		if (!interface::getLine(input, "Enter ADD, SEARCH or EXIT: ") || input == "EXIT")
+		if (!interface::getValidInput(input, "Enter ADD, SEARCH or EXIT: ") || input == "EXIT")
 			break;
 		if (input == "ADD")
-			interface::add::handle(&phonebook);
+			phonebook.addContact();
 		else if (input == "SEARCH")
-			interface::search::handle(&phonebook);
+			phonebook.searchContact();
 	}
 }

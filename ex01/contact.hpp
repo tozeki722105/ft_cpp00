@@ -12,15 +12,16 @@ public:
 	Contact();
 	Contact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
 	~Contact();
-	void print_formatted(unsigned int width, char delim, unsigned int id);
+	void printInfo(
+			bool secret_print, unsigned int id, unsigned int width = 10, char delim = '|') const;
+	static void printHeader(bool secret_print, unsigned int width = 10, char delim = '|');
 
 private:
-	std::string        first_name;
-	std::string        last_name;
-	std::string        nickname;
-	std::string        phone_number;
-	std::string        darkest_secret;
-	static std::string fixed_width(const std::string &str, unsigned int width);
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
 };
 
 #endif
